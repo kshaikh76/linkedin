@@ -47,9 +47,7 @@ module LinkedIn
       # Get company updates. 
       # For parameters and output format see here - http://developer.linkedin.com/reading-company-updates
       def company_updates(options={})
-        start = options[:start] ? options[:start] : 0
-        limit = options[:limit] ? options[:limit] : 10
-        path = "/companies/#{options[:id]}/updates?event-type=#{options[:event_type]}&start=#{start}&limit=#{limit}"
+        path = "/companies/#{options[:id]}/updates?event-type=#{options[:event_type]}&" + pagination_params(options)
         simple_query(path, options)
       end
 
