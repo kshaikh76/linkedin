@@ -64,6 +64,18 @@ module LinkedIn
       # end
       #
 
+      # Start following a company - http://developer.linkedin.com/documents/company-follow-and-suggestions
+      def follow_company(id)
+        path = "/people/~/following/companies"
+        company = {'id' => id}
+        post(path, company.to_json, "Content-Type" => "application/json")
+      end
+
+      # Stop following a company - http://developer.linkedin.com/documents/company-follow-and-suggestions
+      def unfollow_company(id)
+        path = "/people/~/following/companies/id=#{id}"
+        delete(path)
+      end
     end
 
   end
